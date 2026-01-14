@@ -56,13 +56,11 @@ Through strict memory mapping, the kernel segments were categorized by their acc
 
 To navigate the kernel research methodology, please follow the folders in numerical order:
 
-* **01_Kernel_Core**: Implementation of the primary exception handlers and vector table.
-* **02_Scheduler_Logic**: Circular linked-list implementation and TCB state-transition code.
-* **03_Synchronization_Primitives**: Source code for the binary mutex and atomic TRAP #0 routines.
-* **04_User_Applications**: Demonstration tasks for multi-threaded LED and 7-segment display control.
-* **05_Technical_Report**: Documentation on context switch latency and memory management.
-* **06_Key_Findings**: Summary of supervisor-mode security and preemptive stability results.
+* **01_Source_Code**: Contains the primary kernel source code (`.asm`), including the Exception Vector Table, Scheduler, and Synchronization Primitives.
+* **02_Technical_Report**: A comprehensive PDF detailing the memory map, context switch timing analysis, and supervisor-mode security protocols.
+* **03_Presentation_Video**: A recorded demonstration showing the kernel managing multiple concurrent tasks and handling mutex contention in the EASy68K simulator.
 
+  
 **Author:** Arun Chakkyadath Chandran
 **Institution:** Newcastle University, UK  
 **Keywords:** Motorola 68000, Assembly, Microkernel, Context Switching, Preemptive Multitasking.
