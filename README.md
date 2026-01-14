@@ -1,1 +1,68 @@
-M68K-LCOS: Preemptive Microkernel AnalysisM68K-LCOS: A preemptive microkernel for the Motorola 68000 architecture featuring a Round-Robin scheduler, TCB management, and mutex synchronization.Systems Programming | Motorola 68000 Architecture🔬 Project OverviewThis research involves the design and implementation of a Preemptive Lightweight Operating System (LCOS) for the Motorola 68000. The study focuses on achieving stable multi-tasking by managing supervisor/user mode transitions and implementing atomic synchronization primitives.The project is structured into four core segments:Part A: Hardware-level Exception Vector Table (EVT) initialization.Part B: Context switching and CPU state preservation.Part C: Round-Robin scheduling and Task Control Block (TCB) management.Part D: Concurrency control using atomic Mutex synchronization.🏆 Key AchievementsPreemptive Logic: Successfully implemented a context switcher driven by hardware timer interrupts (IRQ 1).Full State Preservation: Achieved 100% restoration of all 15 registers (D0-D7, A0-A6) plus SR and PC.Optimized Scheduling: Developed a circular linked-list scheduler with specialized "Ready/Blocked" states.Kernel Security: Implemented a secure TRAP #0 interface to isolate kernel services from user applications.🛠️ System Architecture & WorkflowThe system utilizes a low-level assembly approach to leverage the hardware abstraction layer of the M68K:Kernel Pipeline: Handles the boot sequence, stack initialization, and hardware-interrupt servicing.Task Pipeline: Utilizes Task Control Blocks (TCB) for state-saving, hyper-tuning task priorities, and real-time dispatching.📊 Detailed System Specifications1. Memory Architecture TiersThrough strict memory mapping, the kernel segments were categorized by their access level:Tier 1 (System): Exception Vector Table ($0000 - $03FF).Tier 2 (Kernel): ISR routines, Scheduler, and Mutex logic ($0400 - $0FFF).Tier 3 (Metadata): TCB Storage and Shared Ready List ($1000 - $17FF).Tier 4 (User): Isolated Task Stacks and Application Code ($6000+).2. Kernel Service PerformanceServiceTrap IDFunctionTask CreationD0 = 1Initializes TCB and Stack Pointer.Wait MutexD0 = 3Blocks task if resource is locked.Signal MutexD0 = 4Releases resource and wakes blocked tasks.📂 Repository Structure (Development Workflow)To navigate the kernel research methodology, please follow the folders in numerical order:01_Kernel_Core: Implementation of the primary exception handlers and vector table.02_Scheduler_Logic: Circular linked-list implementation and TCB state-transition code.03_Synchronization_Primitives: Source code for the binary mutex and atomic TRAP #0 routines.04_User_Applications: Demonstration tasks for multi-threaded LED and 7-segment display control.05_Technical_Report: Documentation on context switch latency and memory management.06_Key_Findings: Summary of supervisor-mode security and preemptive stability results.Author: [Your Name]Institution: Newcastle University, UKKeywords: Motorola 68000, Assembly, Microkernel, Context Switching, Preemptive Multitasking.
+# M68K-LCOS: Preemptive Microkernel Analysis
+
+**M68K-LCOS:** A preemptive microkernel for the Motorola 68000 architecture featuring a Round-Robin scheduler, TCB management, and mutex synchronization.
+
+**Systems Programming | Motorola 68000 Architecture**
+
+## 🔬 Project Overview
+
+This research involves the design and implementation of a **Preemptive Lightweight Operating System (LCOS)** for the Motorola 68000. The study focuses on achieving stable multi-tasking by managing supervisor/user mode transitions and implementing atomic synchronization primitives.
+
+
+
+The project is structured into four core segments:
+
+* **Part A:** Hardware-level Exception Vector Table (EVT) initialization.
+* **Part B:** Context switching and CPU state preservation.
+* **Part C:** Round-Robin scheduling and Task Control Block (TCB) management.
+* **Part D:** Concurrency control using atomic Mutex synchronization.
+
+## 🏆 Key Achievements
+
+* **Preemptive Logic:** Successfully implemented a context switcher driven by hardware timer interrupts (IRQ 1).
+* **Full State Preservation:** Achieved 100% restoration of all 15 registers (D0-D7, A0-A6) plus SR and PC.
+* **Optimized Scheduling:** Developed a circular linked-list scheduler with specialized "Ready/Blocked" states.
+* **Kernel Security:** Implemented a secure TRAP #0 interface to isolate kernel services from user applications.
+
+## 🛠️ System Architecture & Workflow
+
+The system utilizes a low-level assembly approach to leverage the hardware abstraction layer of the M68K:
+
+1. **Kernel Pipeline:** Handles the boot sequence, stack initialization, and hardware-interrupt servicing.
+2. **Task Pipeline:** Utilizes Task Control Blocks (TCB) for state-saving, hyper-tuning task priorities, and real-time dispatching.
+
+
+
+## 📊 Detailed System Specifications
+
+### **1. Memory Architecture Tiers**
+
+Through strict memory mapping, the kernel segments were categorized by their access level:
+
+* **Tier 1 (System):** Exception Vector Table ($0000 - $03FF).
+* **Tier 2 (Kernel):** ISR routines, Scheduler, and Mutex logic ($0400 - $0FFF).
+* **Tier 3 (Metadata):** TCB Storage and Shared Ready List ($1000 - $17FF).
+* **Tier 4 (User):** Isolated Task Stacks and Application Code ($6000+).
+
+### **2. Kernel Service Performance**
+
+| Service | Trap ID | Function |
+
+| **Task Creation** | **D0 = 1** | Initializes TCB and Stack Pointer. |
+| **Wait Mutex** | **D0 = 3** | Blocks task if resource is locked. |
+| **Signal Mutex** | **D0 = 4** | Releases resource and wakes blocked tasks. |
+
+## 📂 Repository Structure (Development Workflow)
+
+To navigate the kernel research methodology, please follow the folders in numerical order:
+
+* **01_Kernel_Core**: Implementation of the primary exception handlers and vector table.
+* **02_Scheduler_Logic**: Circular linked-list implementation and TCB state-transition code.
+* **03_Synchronization_Primitives**: Source code for the binary mutex and atomic TRAP #0 routines.
+* **04_User_Applications**: Demonstration tasks for multi-threaded LED and 7-segment display control.
+* **05_Technical_Report**: Documentation on context switch latency and memory management.
+* **06_Key_Findings**: Summary of supervisor-mode security and preemptive stability results.
+
+**Author:** Arun Chakkyadath Chandran
+**Institution:** Newcastle University, UK  
+**Keywords:** Motorola 68000, Assembly, Microkernel, Context Switching, Preemptive Multitasking.
