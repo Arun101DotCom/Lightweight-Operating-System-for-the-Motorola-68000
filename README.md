@@ -57,7 +57,7 @@ Through strict memory mapping, the kernel segments were categorized by their acc
 
 To navigate the kernel research methodology, please follow the folders in numerical order:
 
-* **01_Source_Code**: Contains the primary kernel source code (`.asm`), including the Exception Vector Table, Scheduler, and Synchronization Primitives.
+* **01_Source_Code**: Contains the primary kernel source code (`.X68 `), including the Exception Vector Table, Scheduler, and Synchronization Primitives.
 * **02_Technical_Report**: A comprehensive PDF detailing the memory map, context switch timing analysis, and supervisor-mode security protocols.
 * **03_Presentation_Video**: A recorded demonstration showing the kernel managing multiple concurrent tasks and handling mutex contention in the EASy68K simulator.
 
