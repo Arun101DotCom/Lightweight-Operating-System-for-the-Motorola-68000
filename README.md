@@ -48,9 +48,10 @@ Through strict memory mapping, the kernel segments were categorized by their acc
 
 | Service | Trap ID | Function |
 
-| **Task Creation** | **D0 = 1** | Initializes TCB and Stack Pointer. |
-| **Wait Mutex** | **D0 = 3** | Blocks task if resource is locked. |
-| **Signal Mutex** | **D0 = 4** | Releases resource and wakes blocked tasks. |
+
+* **| **Task Creation** | **D0 = 1** | Initializes TCB and Stack Pointer. |
+* **| **Wait Mutex** | **D0 = 3** | Blocks task if resource is locked. |
+* **| **Signal Mutex** | **D0 = 4** | Releases resource and wakes blocked tasks. |
 
 ## 📂 Repository Structure (Development Workflow)
 
